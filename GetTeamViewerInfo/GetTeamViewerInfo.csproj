@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Controller\LogController.cs" />
     <Compile Include="Controller\UploadController.cs" />
     <Compile Include="Model\MainConfig.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using GetTeamViewerInfo.Commands;
 using GetTeamViewerInfo.Controller;
 using GetTeamViewerInfo.View;
 
@@ -13,8 +14,11 @@ namespace GetTeamViewerInfo
         [STAThread]
         static void Main()
         {
-            UploadController controller = new UploadController();
-            MainMenuView main = new MainMenuView(controller);
+            Command.ReleaseMemory(true);
+            LogController.OpenLogFile();
+            var controller = new UploadController();
+            var menuView = new MainMenuView(controller);
+            LogController.Info("Application Starting...");
             Application.Run();
         }
     }

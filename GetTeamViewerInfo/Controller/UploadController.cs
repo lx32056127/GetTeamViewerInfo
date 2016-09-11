@@ -8,5 +8,6 @@ namespace GetTeamViewerInfo.Controller
 {
     public class UploadController
     {
+        private static System.Threading.Timer _autoUploadTimer;
     }
 }
