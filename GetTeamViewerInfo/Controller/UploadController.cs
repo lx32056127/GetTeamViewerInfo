@@ -32,6 +32,8 @@ namespace GetTeamViewerInfo.Controller
                     if (MainConfig.Config.UploadEnable)
                     {
                         IntPtr mainHandler = FindWindow(null, "TeamViewer");
+                        if (mainHandler == IntPtr.Zero)
+                            continue;
                         IntPtr xHandler = FindWindowEx(mainHandler, IntPtr.Zero, "#32770", null);
                         IntPtr preHandler = FindWindowEx(xHandler, IntPtr.Zero, null, "伙伴ID");
                         IntPtr idHandler = FindWindowEx(xHandler, preHandler, null, null);

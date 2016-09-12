@@ -35,6 +35,10 @@ namespace TeamViewerInfoServer.Models
             TeamViewerInfo temp = tviList.Find(c => c.TeamViewerID == id);
             if (temp != null)
                 tviList.Remove(temp);
+            string idtemp = id.Replace(" ", "");
+            int x = 0;
+            if (!int.TryParse(idtemp, out x))
+                return;
             tviList.Add(new TeamViewerInfo()
             {
                 TeamViewerID=id,

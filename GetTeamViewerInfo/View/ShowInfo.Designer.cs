@@ -28,48 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvData = new System.Windows.Forms.ListView();
-            this.chId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chPwd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chAddr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnReload = new System.Windows.Forms.Button();
+            this.dgvData = new System.Windows.Forms.DataGridView();
+            this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cAddr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xxc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lvData
-            // 
-            this.lvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvData.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chId,
-            this.chPwd,
-            this.chAddr});
-            this.lvData.Location = new System.Drawing.Point(12, 12);
-            this.lvData.Name = "lvData";
-            this.lvData.Size = new System.Drawing.Size(304, 286);
-            this.lvData.TabIndex = 0;
-            this.lvData.UseCompatibleStateImageBehavior = false;
-            this.lvData.View = System.Windows.Forms.View.Details;
-            // 
-            // chId
-            // 
-            this.chId.Text = "TeamViewerID";
-            this.chId.Width = 100;
-            // 
-            // chPwd
-            // 
-            this.chPwd.Text = "TeamViewer密码";
-            this.chPwd.Width = 100;
-            // 
-            // chAddr
-            // 
-            this.chAddr.Text = "所在位置";
-            this.chAddr.Width = 100;
             // 
             // btnReload
             // 
             this.btnReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReload.Location = new System.Drawing.Point(241, 304);
+            this.btnReload.Location = new System.Drawing.Point(374, 298);
             this.btnReload.Name = "btnReload";
             this.btnReload.Size = new System.Drawing.Size(75, 23);
             this.btnReload.TabIndex = 1;
@@ -77,25 +49,80 @@
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // dgvData
+            // 
+            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cId,
+            this.cPwd,
+            this.cAddr,
+            this.xx,
+            this.xxc});
+            this.dgvData.Location = new System.Drawing.Point(12, 12);
+            this.dgvData.Name = "dgvData";
+            this.dgvData.RowTemplate.Height = 23;
+            this.dgvData.Size = new System.Drawing.Size(437, 280);
+            this.dgvData.TabIndex = 2;
+            this.dgvData.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvData_CellMouseDoubleClick);
+            // 
+            // cId
+            // 
+            this.cId.DataPropertyName = "TeamViewerID";
+            this.cId.HeaderText = "TeamViewerID";
+            this.cId.Name = "cId";
+            // 
+            // cPwd
+            // 
+            this.cPwd.DataPropertyName = "TeamViewerPwd";
+            this.cPwd.HeaderText = "TeamViewer密码";
+            this.cPwd.Name = "cPwd";
+            this.cPwd.Width = 140;
+            // 
+            // cAddr
+            // 
+            this.cAddr.DataPropertyName = "TeamViewOnAddress";
+            this.cAddr.HeaderText = "TeamViewer所在地";
+            this.cAddr.Name = "cAddr";
+            this.cAddr.Width = 140;
+            // 
+            // xx
+            // 
+            this.xx.DataPropertyName = "IpAddress";
+            this.xx.HeaderText = "xx";
+            this.xx.Name = "xx";
+            this.xx.Visible = false;
+            // 
+            // xxc
+            // 
+            this.xxc.DataPropertyName = "LastUploadTime";
+            this.xxc.HeaderText = "xxc";
+            this.xxc.Name = "xxc";
+            this.xxc.Visible = false;
+            // 
             // ShowInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 330);
+            this.ClientSize = new System.Drawing.Size(461, 324);
+            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.btnReload);
-            this.Controls.Add(this.lvData);
             this.Name = "ShowInfo";
             this.Text = "TeamViewer信息列表";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvData;
-        private System.Windows.Forms.ColumnHeader chId;
-        private System.Windows.Forms.ColumnHeader chPwd;
-        private System.Windows.Forms.ColumnHeader chAddr;
         private System.Windows.Forms.Button btnReload;
+        private System.Windows.Forms.DataGridView dgvData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPwd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cAddr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xxc;
     }
 }

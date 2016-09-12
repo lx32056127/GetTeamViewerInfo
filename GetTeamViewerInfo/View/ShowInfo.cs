@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListViewItem;
 
 namespace GetTeamViewerInfo.View
 {
@@ -28,15 +29,14 @@ namespace GetTeamViewerInfo.View
 
         private void LoadData()
         {
-            lvData.Items.Clear();
             List<TeamViewerInfoVM> tviList = OnServerInfo.Load();
-            foreach(TeamViewerInfoVM tvi in tviList)
-            {
-                ListViewItem lvi = new ListViewItem(tvi.TeamViewerID);
-                lvi.SubItems.Add(tvi.TeamViewerPwd);
-                lvi.SubItems.Add(tvi.TeamViewOnAddress);
-                lvData.Items.Add(lvi);
-            }
+            dgvData.DataSource = tviList;
+        }
+
+        private void dgvData_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewCell dgvc = ((DataGridView)sender).SelectedCells[0];
+            Clipboard.SetDataObject(dgvc.Value);
         }
     }
 }
