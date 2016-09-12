@@ -11,10 +11,10 @@ namespace TeamViewerInfoServer.Controllers
     public class TeamViewerInfoController : ApiController
     {
         // GET: api/TeamViewerInfo
-        public List<TeamViewerInfo> GetAll()
+        public IHttpActionResult GetAll()
         {
             LogController.Info("Load Info By <" + GetIPAddress + ">,Command Complete.");
-            return TeamViewerCommand.Load();
+            return Json(TeamViewerCommand.Load());
         }
 
         // POST: api/TeamViewerInfo
@@ -22,10 +22,11 @@ namespace TeamViewerInfoServer.Controllers
         public IHttpActionResult Post([FromBody]AddMess entity)
         {
             string ip = GetIPAddress;
+            if (string.IsNullOrEmpty(entity.id) && string.IsNullOrEmpty(entity.pwd))
+                return Json(new { code = 0, result = "操作失败,检查参数" });
             LogController.Info(string.Format("accept TeamViewer Info From <{0}>,Info Mess:<ip={1}&pwd={2}&addr={3}>", ip, entity.id, entity.pwd, entity.addr));
             TeamViewerCommand.Add(entity.id, entity.pwd, entity.addr, ip);
-            var Mess = new { code = 1, result = "添加成功" };
-            return Json(Mess);
+            return Json(new { code = 1, result = "添加成功" });
         }
         
         public class AddMess

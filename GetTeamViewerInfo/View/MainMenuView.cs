@@ -15,17 +15,18 @@ namespace GetTeamViewerInfo.View
         private static readonly MenuItem _getTeamviewerInfo = new MenuItem("获取TeamViewer信息列表");
         private static readonly MenuItem _exit= new MenuItem("退出");
         private static System.Threading.Timer _logTimeTimer;
+        private static ShowInfo si = new ShowInfo();
 
         public MainMenuView(UploadController controller)
         {
             //初始化配置
-            _upload = controller;
             _logTimeTimer = new System.Threading.Timer(CheckLogDate, null, 1000, 1000);
 
             //读取配置
             MainConfig.Load();
             MainConfig.UploadEnableChanges += SetEnableUpload;
             MainConfig.Config.UploadEnable = MainConfig.Config.UploadEnable;
+            _upload = controller;
             LogController.Info("Config Load Complete");
 
             //初始化菜单
@@ -39,6 +40,7 @@ namespace GetTeamViewerInfo.View
                 _exit
             }
             };
+            _getTeamviewerInfo.Click+=OpenGetData;
 
             //初始化托盘
             _notify = new NotifyIcon
@@ -55,6 +57,13 @@ namespace GetTeamViewerInfo.View
             _autoUpload.Click += UploadClick;
 
             LogController.Info("Application Initialization Complete");
+        }
+
+        private void OpenGetData(object sender,EventArgs e)
+        {
+            if (!si.Visible)
+                si = new ShowInfo();
+            si.Show();
         }
 
         //检查日志时间

@@ -29,6 +29,9 @@ namespace GetTeamViewerInfo.Model
         //气泡信息
         public string BubbleInfo { get; set; }
 
+        //所在店名
+        public string Addr { get; set; }
+
         //上传路径
         public string WebApiUri { get; set; }
 
@@ -49,7 +52,8 @@ namespace GetTeamViewerInfo.Model
                 {
                     UploadEnable = false,
                     BubbleInfo = "GetTeamViewerInfo V0.1 Alpha\nPower By Chedone",
-                    WebApiUri="http://127.0.0.1/api/TeamViewerInfo"
+                    Addr = "默认配置",
+                    WebApiUri= "http://localhost:51407/api/TeamViewerInfo"
                 };
                 Save();
                 LogController.Error(e);

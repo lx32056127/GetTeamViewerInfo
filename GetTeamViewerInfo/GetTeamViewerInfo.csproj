@@ -54,12 +54,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CookieWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controller\LogController.cs" />
     <Compile Include="Controller\UploadController.cs" />
     <Compile Include="Model\MainConfig.cs" />
+    <Compile Include="Model\OnServerInfo.cs" />
+    <Compile Include="Model\TeamViewerInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\MainMenuView.cs" />
+    <Compile Include="View\ShowInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ShowInfo.Designer.cs">
+      <DependentUpon>ShowInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,6 +81,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\ShowInfo.resx">
+      <DependentUpon>ShowInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,9 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fa.ico" />
-    <None Include="Resources\icon_16x16.ico" />
     <None Include="Resources\icon_64x64.ico" />
     <None Include="Resources\icon_32x32.ico" />
+    <None Include="Resources\icon_16x16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
