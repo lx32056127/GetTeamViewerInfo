@@ -33,8 +33,8 @@
             this.cId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPwd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cAddr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xxc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_upload_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,8 +59,8 @@
             this.cId,
             this.cPwd,
             this.cAddr,
-            this.xx,
-            this.xxc});
+            this.ip,
+            this.last_upload_time});
             this.dgvData.Location = new System.Drawing.Point(12, 12);
             this.dgvData.Name = "dgvData";
             this.dgvData.RowTemplate.Height = 23;
@@ -70,37 +70,37 @@
             // 
             // cId
             // 
-            this.cId.DataPropertyName = "TeamViewerID";
+            this.cId.DataPropertyName = "tvid";
             this.cId.HeaderText = "TeamViewerID";
             this.cId.Name = "cId";
             // 
             // cPwd
             // 
-            this.cPwd.DataPropertyName = "TeamViewerPwd";
+            this.cPwd.DataPropertyName = "tvpwd";
             this.cPwd.HeaderText = "TeamViewer密码";
             this.cPwd.Name = "cPwd";
             this.cPwd.Width = 140;
             // 
             // cAddr
             // 
-            this.cAddr.DataPropertyName = "TeamViewOnAddress";
+            this.cAddr.DataPropertyName = "addr";
             this.cAddr.HeaderText = "TeamViewer所在地";
             this.cAddr.Name = "cAddr";
             this.cAddr.Width = 140;
             // 
-            // xx
+            // ip
             // 
-            this.xx.DataPropertyName = "IpAddress";
-            this.xx.HeaderText = "xx";
-            this.xx.Name = "xx";
-            this.xx.Visible = false;
+            this.ip.DataPropertyName = "ip";
+            this.ip.HeaderText = "上传IP";
+            this.ip.Name = "ip";
+            this.ip.Visible = false;
             // 
-            // xxc
+            // last_upload_time
             // 
-            this.xxc.DataPropertyName = "LastUploadTime";
-            this.xxc.HeaderText = "xxc";
-            this.xxc.Name = "xxc";
-            this.xxc.Visible = false;
+            this.last_upload_time.DataPropertyName = "last_upload_time";
+            this.last_upload_time.HeaderText = "最后上传时间";
+            this.last_upload_time.Name = "last_upload_time";
+            this.last_upload_time.Visible = false;
             // 
             // ShowInfo
             // 
@@ -122,7 +122,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cId;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPwd;
         private System.Windows.Forms.DataGridViewTextBoxColumn cAddr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xx;
-        private System.Windows.Forms.DataGridViewTextBoxColumn xxc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_upload_time;
     }
 }

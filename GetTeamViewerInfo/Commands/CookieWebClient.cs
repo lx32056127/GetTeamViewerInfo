@@ -21,6 +21,7 @@ namespace GetTeamViewerInfo.Commands
             this.cookieContainer = new CookieContainer();
             Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36");
             Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            Headers.Add("Authorization", "Token token=5mx8+R30VSgPNSRIogaV2xRhsjgdUxZQ/T/ruTYF8zxnYACyqeYSs4mE97GxO7OpQOBooJ0WPNPf+B6rN5tUXQ==,phone=18565790271");
         }
 
         /**/
@@ -33,6 +34,7 @@ namespace GetTeamViewerInfo.Commands
             this.cookieContainer = cookies;
             Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36");
             Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            Headers.Add("Authorization", "Token token=5mx8+R30VSgPNSRIogaV2xRhsjgdUxZQ/T/ruTYF8zxnYACyqeYSs4mE97GxO7OpQOBooJ0WPNPf+B6rN5tUXQ==,phone=18565790271");
         }
 
         /**/

@@ -33,7 +33,10 @@ namespace GetTeamViewerInfo.Model
         public string Addr { get; set; }
 
         //上传路径
-        public string WebApiUri { get; set; }
+        public string WebApiUpUri { get; set; }
+
+        //获取路径
+        public string WebApiGetUri { get; set; }
 
         //读取配置
         public static MainConfig Load()
@@ -53,10 +56,11 @@ namespace GetTeamViewerInfo.Model
                     UploadEnable = false,
                     BubbleInfo = "GetTeamViewerInfo V0.1 Alpha\nPower By Chedone",
                     Addr = "默认配置",
-                    WebApiUri= "http://localhost:51407/api/TeamViewerInfo"
+                    WebApiUpUri = "http://api.chedone.com:8080/tvupload",
+                    WebApiGetUri = "http://api.chedone.com:8080/tvdownload"
                 };
                 Save();
-                LogController.Error(e);
+                LogController.Info("New Config File...");
                 return Config;
             }
         }

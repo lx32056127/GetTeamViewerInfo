@@ -19,9 +19,12 @@ namespace GetTeamViewerInfo.Model
             {
                 using (CookieWebClient _webClient = new CookieWebClient())
                 {
-                    byte[] requestData = _webClient.DownloadData(MainConfig.Config.WebApiUri);
-                    var responseJson = Encoding.UTF8.GetString(requestData);
-                    tvilist = JsonConvert.DeserializeObject<List<TeamViewerInfoVM>>(responseJson);
+                    if (MainConfig.Config != null)
+                    {
+                        byte[] requestData = _webClient.DownloadData(MainConfig.Config.WebApiGetUri);
+                        var responseJson = Encoding.UTF8.GetString(requestData);
+                        tvilist = JsonConvert.DeserializeObject<List<TeamViewerInfoVM>>(responseJson);
+                    }
                 }
                 LogController.Info("Load Api Data Complete...");
             }
@@ -36,18 +39,18 @@ namespace GetTeamViewerInfo.Model
     public class TeamViewerInfoVM
     {
         //TeamViewerID
-        public string TeamViewerID { get; set; }
+        public string tvid { get; set; }
 
         //TeamViewer密码
-        public string TeamViewerPwd { get; set; }
+        public string tvpwd { get; set; }
 
         //所属店铺
-        public string TeamViewOnAddress { get; set; }
+        public string addr { get; set; }
 
         //来源IP
-        public string IpAddress { get; set; }
+        public string ip { get; set; }
 
         //最后一次上传信息的时间
-        public string LastUploadTime { get; set; }
+        public string last_upload_time { get; set; }
     }
 }
