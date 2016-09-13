@@ -63,6 +63,16 @@ namespace GetTeamViewerInfo.Properties {
         /// <summary>
         ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Icon icon_128x128 {
+            get {
+                object obj = ResourceManager.GetObject("icon_128x128", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 (Icon) 的 System.Drawing.Icon 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Icon icon_16x16 {
             get {
                 object obj = ResourceManager.GetObject("icon_16x16", resourceCulture);
