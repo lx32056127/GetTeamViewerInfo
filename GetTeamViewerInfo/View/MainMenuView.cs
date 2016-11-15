@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using GetTeamViewerInfo.Controller;
 using GetTeamViewerInfo.Model;
 using GetTeamViewerInfo.Properties;
+using Microsoft.Win32;
 
 namespace GetTeamViewerInfo.View
 {
@@ -14,6 +15,7 @@ namespace GetTeamViewerInfo.View
         private static readonly MenuItem _autoUpload = new MenuItem("自动上报TeamViewer信息");
         private static readonly MenuItem _getTeamviewerInfo = new MenuItem("获取TeamViewer信息列表");
         private static readonly MenuItem _exit= new MenuItem("退出");
+        private static readonly MenuItem _autostart = new MenuItem("开机自启动");
         private static System.Threading.Timer _logTimeTimer;
         private static ShowInfo si = new ShowInfo();
 
@@ -37,11 +39,12 @@ namespace GetTeamViewerInfo.View
                 _autoUpload,
                 _getTeamviewerInfo,
                 new MenuItem("-"),
+                _autostart,
                 _exit
             }
             };
             _getTeamviewerInfo.Click+=OpenGetData;
-
+            _autostart.Click += _autostart_Click;
             //初始化托盘
             _notify = new NotifyIcon
             {
@@ -57,6 +60,30 @@ namespace GetTeamViewerInfo.View
             _autoUpload.Click += UploadClick;
 
             LogController.Info("Application Initialization Complete");
+        }
+
+        private void _autostart_Click(object sender, EventArgs e)
+        {
+            _autostart.Checked = !_autostart.Checked;
+            bool x = _autostart.Checked;
+            if (x) //设置开机自启动  
+            {
+                string path = Application.ExecutablePath;
+                RegistryKey rk = Registry.LocalMachine;
+                RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                rk2.SetValue("GTIStart", path);
+                rk2.Close();
+                rk.Close();
+            }
+            else //取消开机自启动  
+            {
+                string path = Application.ExecutablePath;
+                RegistryKey rk = Registry.LocalMachine;
+                RegistryKey rk2 = rk.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+                rk2.DeleteValue("GTIStart", false);
+                rk2.Close();
+                rk.Close();
+            }
         }
 
         private void OpenGetData(object sender,EventArgs e)

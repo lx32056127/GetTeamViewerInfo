@@ -37,6 +37,10 @@ namespace GetTeamViewerInfo.Controller
                             continue;
                         IntPtr xHandler = FindWindowEx(mainHandler, IntPtr.Zero, "#32770", null);
                         IntPtr preHandler = FindWindowEx(xHandler, IntPtr.Zero, null, "伙伴ID");
+                        if (preHandler == IntPtr.Zero)
+                        {
+                            preHandler = FindWindowEx(xHandler, IntPtr.Zero, null, "Partner ID");// Support English Version.
+                        }
                         IntPtr idHandler = FindWindowEx(xHandler, preHandler, null, null);
                         IntPtr pwdHandler = FindWindowEx(xHandler, idHandler, null, null);
                         StringBuilder id = new StringBuilder();
@@ -75,6 +79,10 @@ namespace GetTeamViewerInfo.Controller
         private void IdOrPwdChange(object sender,EventArgs e)
         {
             if (tvi == null || tvi.id == null || tvi.pwd == null)
+                return;
+            string tmp = tvi.id.Replace(" ", "");
+            int x = 0;
+            if (!int.TryParse(tmp, out x))
                 return;
             using (CookieWebClient _webClient = new CookieWebClient(cookies))
             {
