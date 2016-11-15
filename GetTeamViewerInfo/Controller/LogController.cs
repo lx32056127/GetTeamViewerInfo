@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 
 namespace GetTeamViewerInfo.Controller
 {
@@ -26,7 +27,7 @@ namespace GetTeamViewerInfo.Controller
             try
             {
                 var logFileName = "Gti" + NowDate + ".log";
-                var logFilePath = Environment.CurrentDirectory + "/log/";
+                var logFilePath = Assembly.GetExecutingAssembly().Location + "/log/";
                 if (!Directory.Exists(logFilePath))
                     Directory.CreateDirectory(logFilePath);
                 _fs = new FileStream(logFilePath + logFileName, FileMode.Append);

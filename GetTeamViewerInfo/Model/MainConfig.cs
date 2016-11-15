@@ -2,6 +2,7 @@
 using System.IO;
 using GetTeamViewerInfo.Controller;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace GetTeamViewerInfo.Model
 {
@@ -10,7 +11,7 @@ namespace GetTeamViewerInfo.Model
     {
         //公共调用
         public static MainConfig Config;
-        private const string FilePath = "gti-config.json";
+        private const string FilePath = "/gti-config.json";
         private bool _uploadEnable;
         public static event EventHandler UploadEnableChanges;
 
@@ -43,7 +44,7 @@ namespace GetTeamViewerInfo.Model
         {
             try
             {
-                var configContent = File.ReadAllText(FilePath);
+                var configContent = File.ReadAllText(Assembly.GetExecutingAssembly().Location+FilePath);
                 Config = JsonConvert.DeserializeObject<MainConfig>(configContent);
                 if (Config.BubbleInfo.Length >= 64)
                     Config.BubbleInfo = Config.BubbleInfo.Substring(0, 63);
